@@ -342,7 +342,6 @@ sf project deploy start -d force-app -o MyOrg --test-level RunLocalTests
 
 ---
 
-## 📚 Technical Deep Dive
 
 ## 📚 Technical Deep Dive
 
