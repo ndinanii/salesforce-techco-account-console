@@ -1,0 +1,37 @@
+# Salesforce cache
+.sf/
+.sfdx/
+.localdevserver/
+deploy-options.json
+
+# LWC VSCode autocomplete
+**/lwc/**/*.d.ts
+
+# LWC Jest coverage reports
+coverage/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Salesforce DX
+.sfdx/
+.localdevserver/
+
+# IDEs
+.idea/
+.vscode/settings.json
+.vscode/tasks.json
+
+# Backup files
+*.bak
+*.tmp

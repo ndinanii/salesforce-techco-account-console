@@ -1,0 +1,128 @@
+<template>
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <div class="dashboard-header">
+            <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+            <div class="header-content">
+                <h1>Account Manager Console</h1>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="dashboard-grid">
+            <!-- Accounts List Section -->
+            <div class="card accounts-section">
+                <div class="card-header">
+                    <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                    <h2>Account Overview</h2>
+                </div>
+                <div class="card-body">
+                    <template if:true={accounts.data}>
+                        <template for:each={accounts.data} for:item="account">
+                            <div key={account.Id} class="account-item" onclick={handleAccountClick} data-id={account.Id}>
+                                <div class="account-main">
+                                    <h3>{account.Name}</h3>
+                                    <div class="account-details">
+                                        <span class="detail-badge industry">{account.Industry}</span>
+                                        <span class="detail-badge opps">
+                                            <lightning-icon icon-name="standard:opportunity" size="xx-small"></lightning-icon>
+                                            {account.opportunityCount} Opportunities
+                                        </span>
+                                    </div>
+                                </div>
+                                <lightning-button-icon 
+                                    icon-name="utility:chevronright" 
+                                    variant="bare" 
+                                    alternative-text="View details">
+                                </lightning-button-icon>
+                            </div>
+                        </template>
+                    </template>
+                    <template if:true={accounts.error}>
+                        <div class="error-message">
+                            <lightning-icon icon-name="utility:error" size="small"></lightning-icon>
+                            Error loading accounts: {accounts.error.body.message}
+                        </div>
+                    </template>
+                    <template if:true={isLoadingAccounts}>
+                        <div class="loading-spinner">
+                            <lightning-spinner alternative-text="Loading accounts"></lightning-spinner>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Chart and Stats -->
+            <div class="bottom-row">
+                <!-- Opportunities Chart Section -->
+                <div class="card chart-section">
+                    <div class="card-header">
+                        <lightning-icon icon-name="standard:opportunity" size="small"></lightning-icon>
+                        <h2>Opportunities by Stage</h2>
+                    </div>
+                    <div class="card-body">
+                        <template if:true={showChart}>
+                            <div class="chart-bars">
+                                <template for:each={chartLegendData} for:item="item">
+                                    <div key={item.stage} class="bar-item">
+                                        <div class="bar-label">
+                                            <span class="stage-name">{item.stage}</span>
+                                            <span class="stage-count">{item.count}</span>
+                                        </div>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style={item.widthStyle} data-color={item.color}></div>
+                                        </div>
+                                        <span class="bar-percentage">{item.percentage}%</span>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        <template if:false={showChart}>
+                            <template if:false={isLoadingOpportunities}>
+                                <template if:false={opportunities.error}>
+                                    <div class="empty-state">
+                                        <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+                                        <p>No opportunities found. Create some opportunities to see the distribution.</p>
+                                    </div>
+                                </template>
+                            </template>
+                        </template>
+                        <template if:true={opportunities.error}>
+                            <div class="error-message">
+                                <lightning-icon icon-name="utility:error" size="small"></lightning-icon>
+                                Error loading opportunities
+                            </div>
+                        </template>
+                        <template if:true={isLoadingOpportunities}>
+                            <div class="loading-spinner">
+                                <lightning-spinner alternative-text="Loading opportunities"></lightning-spinner>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Section -->
+                <div class="card stats-section">
+                    <div class="card-header">
+                        <lightning-icon icon-name="standard:metrics" size="small"></lightning-icon>
+                        <h2>Quick Stats</h2>
+                    </div>
+                    <div class="card-body stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">{totalAccounts}</div>
+                            <div class="stat-label">Total Accounts</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">{totalOpportunities}</div>
+                            <div class="stat-label">Total Opportunities</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">{openOpportunities}</div>
+                            <div class="stat-label">Open Opportunities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

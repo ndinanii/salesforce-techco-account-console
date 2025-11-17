@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+        <members>AccountListController</members>
+        <members>AccountListControllerTest</members>
+        <members>AccountManagerController</members>
+        <members>AccountManagerControllerTest</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>*</members>
-        <name>CustomObject</name>
+        <members>AccountConsoleApp</members>
+        <name>CustomApplication</name>
     </types>
     <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
+        <members>AccountConsoleHome</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>accountManagerDashboard</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>AccountList</members>
+        <name>ApexPage</name>
     </types>
     <version>58.0</version>
 </Package>
