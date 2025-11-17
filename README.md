@@ -518,14 +518,14 @@ sf project deploy start -d force-app/main/default/applications -o MyOrg
 ## 📞 Project Information
 
 **Repository**: [github.com/ndinanii/salesforce-techco-account-console](https://github.com/ndinanii/salesforce-techco-account-console)  
-**Developer**: Ndina Ni  
+**Developer**: Wonga Ndinani Myendeki
 **GitHub**: [@ndinanii](https://github.com/ndinanii)  
 **Date**: November 2025  
 **License**: MIT  
 
 ---
 
-## 🙏 Strategist's Reflection
+## 🙏 My Reflection
 
 When I started this project, the challenge was clear: **Account Managers were drowning in tabs**. But the real insight came from asking: *"What if we eliminate the need to navigate?"*
 
@@ -537,4 +537,4 @@ The success metric isn't the 100% code coverage or the modern UI—**it's the 14
 
 ---
 
-**Built with 💜 by a Salesforce Strategist committed to solving real business problems through elegant technical solutions.**
+**Built with 💜 by a Salesforce Platform Developer committed to solving real business problems through elegant technical solutions.**
